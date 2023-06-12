@@ -55,18 +55,6 @@ def main():
 
     st.header("ChatAudio")
 
-    if st.text_input("OpenAI API Key", value=st.session_state["OPENAI_API_KEY"], key="input_OPENAI_API_KEY", type="password"):
-        if (
-            len(st.session_state["input_OPENAI_API_KEY"]) > 0
-            and st.session_state["input_OPENAI_API_KEY"] != st.session_state["OPENAI_API_KEY"]
-        ):
-            st.session_state["OPENAI_API_KEY"] = st.session_state["input_OPENAI_API_KEY"]
-            if st.session_state["audioquery"] is not None:
-                st.warning("Please, upload the files again.")
-            st.session_state["messages"] = []
-            st.session_state["user_input"] = ""
-            st.session_state["audioquery"] = AudioQuery(st.session_state["OPENAI_API_KEY"])
-
     st.subheader("Upload an audio file")
     st.file_uploader(
         "Upload audio file",
@@ -81,7 +69,7 @@ def main():
     st.session_state["ingestion_spinner"] = st.empty()
 
     display_messages()
-    st.text_area("Message", key="user_input", disabled=not is_openai_api_key_set(), on_change=process_input)
+    st.text_input("Message", key="user_input", disabled=not is_openai_api_key_set(), on_change=process_input)
 
     st.divider()
 
