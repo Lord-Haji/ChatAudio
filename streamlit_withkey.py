@@ -81,7 +81,7 @@ def main():
     st.session_state["ingestion_spinner"] = st.empty()
 
     display_messages()
-    st.text_area("Message", key="user_input", disabled=not is_openai_api_key_set(), on_change=process_input)
+    st.text_input("Message", key="user_input", disabled=not is_openai_api_key_set(), on_change=process_input)
 
     st.divider()
 
