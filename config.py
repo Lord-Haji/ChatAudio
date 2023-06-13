@@ -9,6 +9,5 @@ if os.path.exists('.env'):
 
 API_KEY = os.getenv("OPENAI_API_KEY")
 
-print(API_KEY)
 
 DATABASE_FILE = 'transcriptions.db'
